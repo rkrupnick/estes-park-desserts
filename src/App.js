@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Map from './Components/Map';
+import Sidebar from './Components/Sidebar';
 import './App.css';
 import SquareAPI from './API/';
 
@@ -22,6 +23,12 @@ class App extends Component {
     });
     this.setState({markers: Object.assign(this.state.markers, markers)});
   };
+
+  onPlaceClick = (venue) => {
+    const marker = this.state.markers.find(marker => marker.id == venue.id);
+    this.onMarkerClick(marker);
+  };
+
 
   onMarkerClick = (marker) => {
     this.hideAllInfoWindows();
@@ -69,6 +76,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+      <Sidebar { ...this.state } onPlaceClick={this.onPlaceClick} />
         <Map { ...this.state } onMarkerClick={this.onMarkerClick} />
       </div>
     );
