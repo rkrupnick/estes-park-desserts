@@ -14,6 +14,21 @@ class App extends Component {
     };
   }
 
+  hideAllInfoWindows = () => {
+    const markers = this.state.markers.map(marker => {
+      marker.infoWindowIsOpen = false;
+      return marker;
+    });
+    this.setState({markers: Object.assign(this.state.markers, markers)});
+  };
+
+  onMarkerClick = (marker) => {
+    this.hideAllInfoWindows();
+    marker.infoWindowIsOpen = true;
+    this.setState({markers: Object.assign(this.state.markers, marker)});
+    console.log(marker);
+  };
+
   componentDidMount() {
     SquareAPI.search({
       near: 'Estes Park, CO',
@@ -26,12 +41,12 @@ class App extends Component {
         return {
           lat: venue.location.lat,
           lng: venue.location.lng,
-          infoWindowisOpen: false,
+          infoWindowIsOpen: false,
           markerIsVisible: true,
         };
       });
       this.setState({ venues, center, markers });
-      console.log(results);
+      //console.log(results);
     });
   }
 
@@ -39,7 +54,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Map { ...this.state } />
+        <Map { ...this.state } onMarkerClick={this.onMarkerClick}/>
       </div>
     );
   }
