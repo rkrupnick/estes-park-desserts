@@ -1,11 +1,14 @@
 {
-  "name": "estes-park-app",
+  "name": "map-app",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.6.0",
-    "react-dom": "^16.6.0",
-    "react-scripts": "2.0.5"
+    "google-maps-react": "^2.0.2",
+    "react": "^16.5.2",
+    "react-bootstrap": "^0.32.4",
+    "react-dom": "^16.5.2",
+    "react-google-maps": "^9.4.5",
+    "react-scripts": "2.0.4"
   },
   "scripts": {
     "start": "react-scripts start",
