@@ -12,16 +12,26 @@ const MyMapComponent = withScriptjs(
       {props.markers &&
         props.markers
           .filter(marker => marker.markerIsVisible)
-          .map((marker, idx) => (
-        <Marker key={idx} position={{ lat: marker.lat, lng: marker.lng }} onClick={() => props.onMarkerClick(marker)}>
-          {marker.infoWindowIsOpen && (
-            <InfoWindow>
-              <p>Hello</p>
-            </InfoWindow>
-          )}
-
+          .map((marker, idx) => {
+            const venueInfo = props.venues.find(venue => venue.id == marker.id);
+           // console.log(venueInfo);
+            return <Marker
+              key={idx}
+              position={{ lat: marker.lat, lng: marker.lng }}
+              onClick={() => props.onMarkerClick(marker)}
+            >
+              {marker.infoWindowIsOpen && (
+                <InfoWindow infoWindowPhotoSrc={props.infoWindowPhotoSrc}>
+                  <div>
+                    {props.infoWindowPhotoSrc &&
+                      <img src={props.infoWindowPhotoSrc} alt={venueInfo.name}/>
+                    }
+                    <p>{venueInfo.name}</p>
+                  </div>
+                </InfoWindow>
+              )}
         </Marker>
-      ))};
+      })};
   </GoogleMap>
 ))
 );

@@ -10,7 +10,8 @@ class App extends Component {
       venues: [],
       markers: [],
       mapCenter: [],
-      zoom: 16,
+      zoom: 15,
+      infoWindowPhotoSrc: '',
     };
   }
 
@@ -26,13 +27,26 @@ class App extends Component {
     this.hideAllInfoWindows();
     marker.infoWindowIsOpen = true;
     this.setState({markers: Object.assign(this.state.markers, marker)});
-    console.log(marker);
+
+    const venue = this.state.venues.find(venue => venue.id == marker.id);
+
+    SquareAPI.getVenueDetails(marker.id).then(results => {
+      const newVenue = Object.assign(results.response.venue, venue);
+        this.setState({ venues: Object.assign(this.state.venues, newVenue)})
+      console.log(newVenue);
+    });
+
+    SquareAPI.getVenuePhotos(venue.id).then(result => {
+      const photoURL = result.response.photos.items[0].prefix + '200x200'
+        + result.response.photos.items[0].suffix;
+      this.setState({ infoWindowPhotoSrc: photoURL });
+    })
   };
 
   componentDidMount() {
     SquareAPI.search({
       near: 'Estes Park, CO',
-      query: 'art',
+      categoryId: '4bf58dd8d48988d1d0941735',
       limit: 10,
     }).then(results => {
       const { venues } = results.response;
@@ -43,6 +57,7 @@ class App extends Component {
           lng: venue.location.lng,
           infoWindowIsOpen: false,
           markerIsVisible: true,
+          id: venue.id,
         };
       });
       this.setState({ venues, center, markers });
@@ -54,7 +69,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Map { ...this.state } onMarkerClick={this.onMarkerClick}/>
+        <Map { ...this.state } onMarkerClick={this.onMarkerClick} />
       </div>
     );
   }
