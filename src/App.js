@@ -13,8 +13,13 @@ class App extends Component {
       mapCenter: [],
       zoom: 15,
       infoWindowPhotoSrc: '',
+      updateSuperState: obj => {
+        this.setState(obj);
+      }
     };
   }
+
+
 
   hideAllInfoWindows = () => {
     const markers = this.state.markers.map(marker => {
@@ -76,7 +81,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-      <Sidebar { ...this.state } onPlaceClick={this.onPlaceClick} />
+      <Sidebar { ...this.state } onPlaceClick={this.onPlaceClick} updateQuery={this.updateQuery}/>
         <Map { ...this.state } onMarkerClick={this.onMarkerClick} />
       </div>
     );
