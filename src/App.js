@@ -11,7 +11,7 @@ class App extends Component {
       venues: [],
       markers: [],
       mapCenter: [],
-      zoom: 15,
+      zoom: 16,
       infoWindowPhotoSrc: '',
       updateSuperState: obj => {
         this.setState(obj);
