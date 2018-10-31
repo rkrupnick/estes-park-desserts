@@ -1,5 +1,12 @@
 body {
   font-size: 10px;
+  background-color: #547899;
+}
+
+h1 {
+  width: 100%;
+  padding-left: 20px;
+  color: #ddd;
 }
 
 .App {
@@ -31,7 +38,7 @@ ol.places-list {
   margin-top: .5rem;
   cursor: pointer;
   background-color: #3388aa;
-  color: white;
+  color: #ddd;
   display: flex;
   align-items: center;
 }

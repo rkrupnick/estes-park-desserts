@@ -80,9 +80,12 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-      <Sidebar { ...this.state } onPlaceClick={this.onPlaceClick} updateQuery={this.updateQuery}/>
-        <Map { ...this.state } onMarkerClick={this.onMarkerClick} />
+      <div className="main">
+        <h1>Estes Park Dessert Shops</h1>
+        <div className="App">
+          <Sidebar { ...this.state } onPlaceClick={this.onPlaceClick} updateQuery={this.updateQuery}/>
+          <Map { ...this.state } onMarkerClick={this.onMarkerClick} />
+        </div>
       </div>
     );
   }
