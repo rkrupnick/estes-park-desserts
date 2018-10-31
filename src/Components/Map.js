@@ -15,7 +15,7 @@ const MyMapComponent = withScriptjs(
         props.markers
           .filter(marker => marker.markerIsVisible)
           .map((marker, idx, array) => {
-            const venueInfo = props.venues.find(venue => venue.id == marker.id);
+            const venueInfo = props.venues.find(venue => venue.id === marker.id);
            // console.log(venueInfo);
             return <Marker
               key={idx}

@@ -16,6 +16,12 @@ h1 {
   flex-flow: row nowrap;
 }
 
+.error {
+  display: flex;
+  color: #ddd;
+  font-size: 1rem;
+}
+
 .sidebar {
   width: 25%;
 }
