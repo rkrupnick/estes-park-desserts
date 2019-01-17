@@ -1,4 +1,5 @@
 # Estes Park Desserts
+This app shows all of the best dessert shops in Estes Park, Colorado.
 
 ## Created with React
 This app was created with create-react-app. It retrieves data from the FourSquare API and displays it on a map created with Google Maps API.
