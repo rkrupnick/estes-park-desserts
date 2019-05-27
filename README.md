@@ -1,5 +1,5 @@
 # Estes Park Desserts
-This app shows all of the best dessert shops in Estes Park, Colorado.
+This app shows all of the best dessert shops in Estes Park, Colorado. Estes Park is a great tourist spot in the Rocky Mountains that has great shopping and candy stores. 
 
 ## Created with React
 This app was created with create-react-app. It retrieves data from the FourSquare API and displays it on a map created with Google Maps API.
